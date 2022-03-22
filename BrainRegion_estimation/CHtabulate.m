@@ -1,5 +1,7 @@
 function CH_Region_table=CHtabulate(RegionEstimate,nV,mode)
 
+% Mode = BA or Region
+
 % Create channel labels
 for i=1:length(RegionEstimate)
     CHname{i,1}=strcat('CH ',num2str(i));
