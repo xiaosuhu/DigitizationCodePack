@@ -95,7 +95,12 @@ for i=1:ch
     tmp_dot_count=cellfun(@(x) sum(ismember(BA{i}(:,3),x)),tmp_brain_region,'un',0);
     tmp_dot_total=sum([tmp_dot_count{:}]);
     for k=1:size(tmp_dot_count)
-        tmp_dot_count{k}=tmp_dot_count{k}/tmp_dot_total;
+        try
+            tmp_dot_count{k}=tmp_dot_count{k}/tmp_dot_total;
+        catch
+            tmp_dot_count{k}=0;
+            warning('Counting went wrong...');
+        end
     end
     Brain_Region_result_sort{i}(:,1)=tmp_brain_region;
     Brain_Region_result_sort{i}(:,2)=tmp_dot_count;
